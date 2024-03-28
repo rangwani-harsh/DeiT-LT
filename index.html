@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="Distillation for ViTs on long-tail datasets">
+  <meta name="keywords" content="DeiT-LT, DeiT, long-tail, ViT, Vision Transformer">
+  <meta name="google-site-verification" content="ja-B3ZMuhURctSUllapmnITY6hoD6p4xOiPr9bMQJdE" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DeiT-LT</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <script>
+    MathJax = {
+      tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }
+    };
+  </script>
+  <style>
+    .img-container {
+      text-align: center;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-2 publication-title">DeiT-LT: Distillation Strikes Back for Vision Transformer Training
+              on Long-Tailed Datasets</h1>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">
+                <a href="">Harsh
+                  Rangwani</a><sup>1</sup>,</span>
+              <span class="author-block">
+                <a href="">Pradipto Mondal
+                </a><sup>1,2</sup>,</span>
+              <span class="author-block">
+                <a href="">Mayank
+                  Mishra</a><sup>1</sup>,</span>
+              <span class="author-block">
+                <a href="https://ashishasokan.github.io/">Ashish Ramayee Asokan</a><sup>1</sup>,</span>
+              <span class="author-block">
+                <a href="https://cds.iisc.ac.in/faculty/venky/">R. Venkatesh Babu</a><sup>1</sup>
+              </span>
+            </div>
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><sup>1</sup>Vision and AI Lab, Indian Institute of Science, <sup>2</sup>Indian
+                Institute of Technology Kharagpur</span>
+            </div>
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <!-- PDF Link. -->
+                <span class="link-block">
+                  <a href="" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                    </span>
+                    <span>Paper</span>
+                    <span class="icon">
+                      <i class="far fa-clock"></i>
+                    </span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href="" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                    </span>
+                    <span>arXiv</span>
+                  </a>
+                </span>
+                <!-- Video Link. -->
+                <span class="link-block">
+                  <a href="" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="far fa-image"></i>
+                    </span>
+                    <span>Poster</span>
+                    <span class="icon">
+                      <i class="far fa-clock"></i>
+                    </span>
+                  </a>
+                </span>
+                <!-- Code Link. -->
+                <span class="link-block">
+                  <a href="" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code</span>
+                  </a>
+                </span>
+              </div>
+              <p><span class="icon">
+                  <i class="far fa-clock"></i>
+                </span> &#8594 Coming Soon!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="video" class="hero teaser">
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+        <img id="overview" src="./static/images/teaser.png">
+        <h2 class="subtitle has-text-centered">
+          <b>TL;DR:</b> We propose DeiT-LT - an OOD distillation framework that distills from CNNs trained via SAM. This
+          leads to <b>(a)</b> learning of local generalizable features in early blocks in ViTs <b>(b)</b> low-rank
+          features across blocks in ViTs which improves generalization <b>(c)</b> significantly improved performance for
+          minority classes compared to SOTA.
+        </h2>
+      </div>
+    </div>
+  </section>
+
+
+
+  <section class="hero is-light is-small">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <br>
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+              Vision Transformer (ViT) has emerged as a prominent
+              architecture for various computer vision tasks. In ViT, we
+              divide the input image into patch tokens and process them
+              through a stack of self-attention blocks. However, unlike
+              Convolutional Neural Networks (CNNs), ViT’s simple archi-
+              tecture has no informative inductive bias (e.g., locality). This
+              causes ViTs to require a large amount of data for pre-training.
+              Various data-efficient approaches (DeiT) have been proposed
+              to train a ViT on balanced data effectively. However, limited
+              literature discusses the use of ViT for datasets with long-
+              tailed imbalances. In this work, we introduce DeiT-LT for
+              tackling the problem of training ViTs from scratch on long-
+              tailed datasets. In DeiT-LT, we introduce an efficient and
+              effective way of distillation from CNN via distillation DIST
+              token, by using out-of-distribution images and re-weighting
+              the distillation loss to enhance focus on tail classes. This
+              leads to learning of local CNN-like features in early ViT
+              blocks, improving generalization for tail classes. Further,
+              to mitigate overfitting, we propose distilling from flat CNN
+              teachers, which leads to learning low-rank generalizable
+              features for DIST tokens across all ViT blocks. With the
+              proposed DeiT-LT scheme, the distillation DIST token be-
+              comes an expert on the tail classes and the classifier CLS
+              token becomes an expert on the head classes. The experts
+              help to effectively learn features related to both the majority
+              and minority classes using a distinct set of tokens within the
+              same ViT architecture. We show the effectiveness of DeiT-LT
+              for training ViTs from scratch on datasets ranging from small-
+              scale CIFAR-10 LT to large-scale iNaturalist-2018.
+            </p>
+            <br>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="video" class="hero teaser">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <br>
+        <h2 class="title is-3">Proposed Method</h2>
+      </div>
+    </div>
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+        <img id="overview" src="./static/images/proposed_approach.png">
+        <div class="content has-text-justified">
+          <ul>
+            <li>
+              <b>Distillation via Out-of-Distribution images</b>: We propose to distill knowledge from a CNN teacher
+              through OOD images generated using CutMix and Mixup. The distillation is done via the DIST token as
+              follows:
+              $$\mathcal{L}_{dist} = \mathcal{L}_{CE} (f^{d}(x), y_{t}), y_t = \arg \max_{i} g(x)_{i}$$
+            </li>
+            <li>
+              <b>Deferred Re-Weighting (DRW) for distillation</b>: We introduce DRW with the distillation loss to
+              encourage the DIST token to focus on the tail classes. This leads to diverse CLS and DIST tokens that
+              specialize on the majority and minority classes, respectively.
+              $$\mathcal{L} = \frac{1}{2}\big{\{}\mathcal{L}_{CE}(f^{c}(x), y) + \mathcal{L}_{DRW} (f^{d}(x),
+              y_{t})\big{\}}$$
+              $$\mathcal{L}_{DRW} = -w_{y_t} \; log (f^{d}(x)_{y_t})$$
+              $$w_y = {1}/\{1 + (e_y - 1)\mathbb{1}_{\mathrm{epoch \geq K}}\}, \textrm{ where }
+              e_y=\frac{1-\beta^{N_y}}{1-\beta}$$
+            </li>
+            <li>
+              <b>Low-rank features via SAM teachers</b>: To further improve the generalizability to tail classes, we
+              propose to distill teachers that have been trained with <a
+                href="https://arxiv.org/abs/2010.01412">Sharpness Aware Minimization (SAM)</a>.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+
+  <section id="video" class="hero teaser is-light">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <br>
+        <h2 class="title is-3">Main Results</h2>
+      </div>
+    </div>
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <style type="text/css">
+          .my_text {
+            font-size: 20px;
+          }
+        </style>
+        <div class="content is-centered has-text-justified my_text">
+          1. <b>Results on CIFAR10-LT and CIFAR100-LT:</b> Performance (%) of the proposed
+          approach DeiT-LT, compared to the existing methods on CIFAR-10 and CIFAR-100 with $\rho=50$ and $\rho=100$.
+        </div>
+        <br>
+        <div class="content is-centered has-text-justified my_text">
+          2. <b>Results on ImageNet-1k:</b> Performance (%) of the proposed approach DeiT-LT, compared to the existing
+          methods on ImageNet-1k.
+        </div>
+
+        <div class="content is-centered has-text-justified my_text">
+          3. <b>Results on iNaturalist-2018</b> Performance (%) of the proposed approach DeiT-LT, compared to the
+          existing methods on ImageNet-1k.
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title">BibTeX</h2>
+      <pre><code>@article{rangwami2024deit-lt,
+  author    = {Rangwani, Harsh and Mondal, Pradipto and Mishra, Mayank and Ramayee Asokan, Ashish and Babu, R Venkatesh},
+  title     = {DeiT-LT: Distillation Strikes Back for Vision Transformer Training on Long-Tailed Datasets},
+  journal   = {CVPR},
+  year      = {2024},
+}</code></pre>
+    </div>
+  </section>
+
+
+  <footer class="footer">
+    <div class="container">
+      <div class="content has-text-centered">
+        <a class="icon-link" href="">
+          <i class="fas fa-file-pdf"></i>
+        </a>
+        <a class="icon-link" href="https://github.com/val-iisc" class="external-link" disabled>
+          <i class="fab fa-github"></i>
+        </a>
+      </div>
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content">
+            <p>
+              This website is licensed under a <a rel="license"
+                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+                Commons Attribution-ShareAlike 4.0 International License</a>.
+            </p>
+            <p>
+              This website is based on the <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a> project
+              page.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>
