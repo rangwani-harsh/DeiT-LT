@@ -244,6 +244,150 @@
           1. <b>Results on CIFAR10-LT and CIFAR100-LT:</b> Performance (%) of the proposed
           approach DeiT-LT, compared to the existing methods on CIFAR-10 and CIFAR-100 with $\rho=50$ and $\rho=100$.
         </div>
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-four-fifths">
+            <style type="text/css">
+              .tg {
+                border-collapse: collapse;
+                border-color: #ccc;
+                border-spacing: 0;
+                border-style: solid;
+                border-width: 1px;
+              }
+    
+              .tg td {
+                background-color: #fff;
+                border-color: #ccc;
+                border-style: solid;
+                border-width: 0px;
+                color: #333;
+                font-family: Arial, sans-serif;
+                font-size: 14px;
+                overflow: hidden;
+                padding: 11px 17px;
+                word-break: normal;
+              }
+    
+              .tg th {
+                background-color: #f0f0f0;
+                border-color: #ccc;
+                border-style: solid;
+                border-width: 0px;
+                color: #333;
+                font-family: Arial, sans-serif;
+                font-size: 14px;
+                font-weight: normal;
+                overflow: hidden;
+                padding: 11px 17px;
+                word-break: normal;
+              }
+    
+              .tg .tg-6rtx {
+                border-color: inherit;
+                font-family: inherit;
+                font-size: 100%;
+                font-weight: bold;
+                text-align: center;
+                vertical-align: bottom
+              }
+    
+              .tg .tg-dm6v {
+                border-color: inherit;
+                font-family: inherit;
+                font-size: 100%;
+                font-weight: bold;
+                text-align: left;
+                vertical-align: bottom
+              }
+    
+              .tg .tg-hcx2 {
+                border-color: #000000;
+                font-family: inherit;
+                font-size: 100%;
+                text-align: left;
+                vertical-align: top
+              }
+    
+              .tg .tg-6aag {
+                border-color: inherit;
+                font-family: inherit;
+                font-size: 100%;
+                text-align: left;
+                vertical-align: bottom
+              }
+    
+              .tg .tg-io7e {
+                border-color: inherit;
+                font-family: inherit;
+                font-size: 100%;
+                text-align: center;
+                vertical-align: bottom
+              }
+            </style>
+            <table class="tg" align="center">
+              <thead>
+                <tr>
+                  <th class="tg-dm6v" rowspan="2"><span style="font-weight:bold">Method</span></th>
+                  <th class="tg-6rtx" colspan="2"><span style="font-weight:bold">CIFAR 10-LT</span></th>
+                  <th class="tg-6rtx" colspan="2"><span style="font-weight:bold">CIFAR 100-LT</span></th>
+                  <!-- <th class="tg-6rtx"><span style="font-weight:bold">DeiT</span></th>
+                  <th class="tg-6rtx"><span style="font-weight:bold">DeiT-III</span></th>
+                  <th class="tg-6rtx"><span style="font-weight:bold">DeiT-LT (ours)</span></th> -->
+                </tr>
+                <tr>
+                  
+                  <th class="tg-6rtx"><span style="font-weight:bold">IF = 50</span></th>
+                  <th class="tg-6rtx"><span style="font-weight:bold">IF = 100</span></th>
+                  <th class="tg-6rtx"><span style="font-weight:bold">IF = 50</span></th>
+                  <th class="tg-6rtx"><span style="font-weight:bold">IF = 100</span></th>
+                  <!-- <th class="tg-6rtx"><span style="font-weight:bold">DeiT-LT (ours)</span></th> -->
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="tg-6aag">ViT (ICLR'2021)</td>
+                  <td class="tg-io7e">62.6</td>
+                  <td class="tg-io7e">70.1</td>
+                  <td class="tg-io7e">35.0</td>
+                  <td class="tg-io7e">39.0</td>
+
+                </tr>
+                <tr>
+                  <td class="tg-hcx2">ViT (cRT) (ICLR'2020)
+                  <td class="tg-io7e">68.9</td>
+                  <td class="tg-io7e">74.5</td>
+                  <td class="tg-io7e">38.9</td>
+
+                  <td class="tg-io7e">42.2</td>
+                </tr>
+                <tr>
+                  <td class="tg-6aag">DeiT (ICML'2021)</td>
+                  <td class="tg-io7e">70.2</td>
+                  <td class="tg-io7e">77.5</td>
+                  <td class="tg-io7e">31.3</td>
+                  <td class="tg-io7e">39.1</td>
+
+                </tr>
+                <tr>
+                  <td class="tg-6aag">DeiT-III (ECCV'2022)</td>
+                  <td class="tg-io7e">59.1</td>
+                  <td class="tg-io7e">68.2</td>
+                  <td class="tg-io7e">38.1</td>
+
+                  <td class="tg-io7e">44.1</td>
+                </tr>
+                <tr>
+                  <td class="tg-6aag"><span style="font-weight:bold">DeiT-LT (ours)</span></td>
+                  <td class="tg-io7e"><span style="font-weight:bold">87.5</span></td>
+                  <td class="tg-io7e"><span style="font-weight:bold">89.8</span></td>
+                  <td class="tg-io7e"><span style="font-weight:bold">55.6</span></td>
+
+                  <td class="tg-io7e"><span style="font-weight:bold">60.5</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
         <br>
         <div class="content is-centered has-text-justified my_text">
           2. <b>Results on ImageNet-1k:</b> Performance (%) of the proposed approach DeiT-LT, compared to the existing
