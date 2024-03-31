@@ -225,8 +225,29 @@
 
   </section>
 
-
   <section id="video" class="hero teaser is-light">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <br>
+        <h2 class="title is-3">Effect of Distillation on DeiT-LT</h2>
+      </div>
+    </div>
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+        <img id="overview" src="./static/images/analysis.png">
+        <div class="has-text-centered">
+          In <b>A.</b> we train DeiT-B with teachers trained on in-distribution images (RegNetY-16GF) and
+out-of-distribution images (ResNet32). The out-of-distribution distillation leads to diverse experts, which become more diverse with deferred
+re-weighting on the distillation token (DRW). In <b>B.</b> we plot the Mean Attention Distance for the patches across the early self attention block
+1 (solid) and block 2 (dashed) for baselines, where we find that DeiT-LT leads to highly local and generalizable features. In <b>C.</b> we show the
+rank of features for DIST token, where we demonstrate that students trained with SAM are more low-rank in comparison to baselines.
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="video" class="hero teaser">
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
         <br>
@@ -245,7 +266,7 @@
   </section>
 
 
-  <section id="video" class="hero teaser">
+  <section id="video" class="hero teaser is-light">
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
         <br>
