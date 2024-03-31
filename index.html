@@ -336,14 +336,56 @@
                 </tr>
                 <tr>
                   
-                  <th class="tg-6rtx"><span style="font-weight:bold">IF = 50</span></th>
-                  <th class="tg-6rtx"><span style="font-weight:bold">IF = 100</span></th>
-                  <th class="tg-6rtx"><span style="font-weight:bold">IF = 50</span></th>
-                  <th class="tg-6rtx"><span style="font-weight:bold">IF = 100</span></th>
+                  <th class="tg-6rtx"><span style="font-weight:bold">$\rho=50$</span></th>
+                  <th class="tg-6rtx"><span style="font-weight:bold">$\rho=100$</span></th>
+                  <th class="tg-6rtx"><span style="font-weight:bold">$\rho=50$</span></th>
+                  <th class="tg-6rtx"><span style="font-weight:bold">$\rho=100$</span></th>
                   <!-- <th class="tg-6rtx"><span style="font-weight:bold">DeiT-LT (ours)</span></th> -->
                 </tr>
               </thead>
               <tbody>
+                <tr style="border-bottom: 1px solid black; border-top: 1px solid black;">
+                  <td colspan="5" class="tg-io7e">ResNet-32 backbone</td>
+                </tr>
+                <tr>
+                  <td class="tg-6aag">CB Focal Loss (CVPR'2019)</td>
+                  <td class="tg-io7e">74.6</td>
+                  <td class="tg-io7e">79.3</td>
+                  <td class="tg-io7e">38.3</td>
+                  <td class="tg-io7e">46.2</td>
+                </tr>
+                <tr>
+                  <td class="tg-6aag">CAM (AAAI'2021)</td>
+                  <td class="tg-io7e">80.0</td>
+                  <td class="tg-io7e">83.6</td>
+                  <td class="tg-io7e">47.8</td>
+                  <td class="tg-io7e">51.7</td>
+                </tr>
+                <tr>
+                  <td class="tg-6aag">GCL (CVPR'2022)</td>
+                  <td class="tg-io7e">82.7</td>
+                  <td class="tg-io7e">85.5</td>
+                  <td class="tg-io7e">48.7</td>
+                  <td class="tg-io7e">53.6</td>
+                </tr>
+                <tr>
+                  <td class="tg-6aag"><sup>1</sup>LDAM+DRW+SAM (NeurIPS'2022)</td>
+                  <td class="tg-io7e">81.9</td>
+                  <td class="tg-io7e">84.8</td>
+                  <td class="tg-io7e">45.4</td>
+                  <td class="tg-io7e">49.4</td>
+                </tr>
+                <tr>
+                  <td class="tg-6aag"><sup>2</sup>PaCo+SAM (ICCV'2021, NeurIPS'2022)</td>
+                  <td class="tg-io7e">86.8</td>
+                  <td class="tg-io7e">88.6</td>
+                  <td class="tg-io7e">52.8</td>
+                  <td class="tg-io7e">56.6</td>
+                </tr>
+
+                <tr style="border-bottom: 1px solid black; border-top: 1px solid black;">
+                  <td colspan="5" class="tg-io7e">ViT backbone</td>
+                </tr>
                 <tr>
                   <td class="tg-6aag">ViT (ICLR'2021)</td>
                   <td class="tg-io7e">62.6</td>
@@ -377,7 +419,15 @@
                   <td class="tg-io7e">44.1</td>
                 </tr>
                 <tr>
-                  <td class="tg-6aag"><span style="font-weight:bold">DeiT-LT (ours)</span></td>
+                  <td class="tg-6aag"><span style="font-weight:bold"><sup>1</sup>DeiT-LT (ours)</span></td>
+                  <td class="tg-io7e"><span style="font-weight:bold">84.8</span></td>
+                  <td class="tg-io7e"><span style="font-weight:bold">87.5</span></td>
+                  <td class="tg-io7e"><span style="font-weight:bold">52.0</span></td>
+
+                  <td class="tg-io7e"><span style="font-weight:bold">54.1</span></td>
+                </tr>
+                <tr>
+                  <td class="tg-6aag"><span style="font-weight:bold"><sup>2</sup>DeiT-LT (ours)</span></td>
                   <td class="tg-io7e"><span style="font-weight:bold">87.5</span></td>
                   <td class="tg-io7e"><span style="font-weight:bold">89.8</span></td>
                   <td class="tg-io7e"><span style="font-weight:bold">55.6</span></td>
@@ -390,14 +440,345 @@
         </div>
         <br>
         <div class="content is-centered has-text-justified my_text">
-          2. <b>Results on ImageNet-1k:</b> Performance (%) of the proposed approach DeiT-LT, compared to the existing
-          methods on ImageNet-1k.
+          2. <b>Results on ImageNet-LT:</b> Performance (%) of the proposed approach DeiT-LT, compared to the existing
+          methods on ImageNet-LT. Supererscripts indicate teacher-student pairs.
         </div>
+            <div class="columns is-centered has-text-centered">
+              <div class="column is-four-fifths">
+                <style type="text/css">
+                  .tg {
+                    border-collapse: collapse;
+                    border-color: #ccc;
+                    border-spacing: 0;
+                    border-style: solid;
+                    border-width: 1px;
+                  }
+        
+                  .tg td {
+                    background-color: #fff;
+                    border-color: #ccc;
+                    border-style: solid;
+                    border-width: 0px;
+                    color: #333;
+                    font-family: Arial, sans-serif;
+                    font-size: 14px;
+                    overflow: hidden;
+                    padding: 11px 17px;
+                    word-break: normal;
+                  }
+        
+                  .tg th {
+                    background-color: #f0f0f0;
+                    border-color: #ccc;
+                    border-style: solid;
+                    border-width: 0px;
+                    color: #333;
+                    font-family: Arial, sans-serif;
+                    font-size: 14px;
+                    font-weight: normal;
+                    overflow: hidden;
+                    padding: 11px 17px;
+                    word-break: normal;
+                  }
+        
+                  .tg .tg-6rtx {
+                    border-color: inherit;
+                    font-family: inherit;
+                    font-size: 100%;
+                    font-weight: bold;
+                    text-align: center;
+                    vertical-align: bottom
+                  }
+        
+                  .tg .tg-dm6v {
+                    border-color: inherit;
+                    font-family: inherit;
+                    font-size: 100%;
+                    font-weight: bold;
+                    text-align: left;
+                    vertical-align: bottom
+                  }
+        
+                  .tg .tg-hcx2 {
+                    border-color: #000000;
+                    font-family: inherit;
+                    font-size: 100%;
+                    text-align: left;
+                    vertical-align: top
+                  }
+        
+                  .tg .tg-6aag {
+                    border-color: inherit;
+                    font-family: inherit;
+                    font-size: 100%;
+                    text-align: left;
+                    vertical-align: bottom
+                  }
+        
+                  .tg .tg-io7e {
+                    border-color: inherit;
+                    font-family: inherit;
+                    font-size: 100%;
+                    text-align: center;
+                    vertical-align: bottom
+                  }
+                </style>
+                <table class="tg" align="center">
+                  <thead>
+                    <tr>
+                      <th class="tg-dm6v"><span style="font-weight:bold">Method</span></th>
+                      <th class="tg-6rtx" ><span style="font-weight:bold">Overall</span></th>
+                      <th class="tg-6rtx" ><span style="font-weight:bold">Head</span></th>
+                      <th class="tg-6rtx"><span style="font-weight:bold">Mid</span></th>
+                      <th class="tg-6rtx"><span style="font-weight:bold">Tail</span></th> 
+
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr style="border-bottom: 1px solid black; border-top: 1px solid black;">
+                      <td colspan="5" class="tg-io7e">ResNet-50 backbone</td>
+                    </tr>
+                    <tr>
+                      <td class="tg-6aag">LDAM (NeurIPS'2019)</td>
+                      <td class="tg-io7e">49.8</td>
+                      <td class="tg-io7e">60.4</td>
+                      <td class="tg-io7e">46.9</td>
+                      <td class="tg-io7e">30.7</td>
+                    </tr>
+                    <tr>
+                      <td class="tg-hcx2">RIDE (3 exp.) (ICLR'2021)</td>
+                      <td class="tg-io7e">54.9</td>
+                      <td class="tg-io7e">66.2</td>
+                      <td class="tg-io7e">51.7</td>
+                      <td class="tg-io7e">34.9</td>
+                    </tr>
+                    <tr>
+                      <td class="tg-hcx2">BCL (NeurIPS'2020)</td>
+                      <td class="tg-io7e">57.1</td>
+                      <td class="tg-io7e">67.9</td>
+                      <td class="tg-io7e">54.2</td>
+                      <td class="tg-io7e">36.6</td>
+                    </tr>
+                    <tr>
+                      <td class="tg-6aag"><sup>1</sup>LDAM+DRW+SAM (NeurIPS'2022)</td>
+                      <td class="tg-io7e">53.1</td>
+                      <td class="tg-io7e">62.0</td>
+                      <td class="tg-io7e">52.1</td>
+                      <td class="tg-io7e">32.8</td>
+                    </tr>
+                    <tr>
+                      <td class="tg-6aag"><sup>2</sup>PaCo+SAM (ICCV'2021, NeurIPS'2022)</td>
+                      <td class="tg-io7e">57.5</td>
+                      <td class="tg-io7e">62.1</td>
+                      <td class="tg-io7e">58.8</td>
+                      <td class="tg-io7e">39.3</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid black; border-top: 1px solid black;">
+                      <td colspan="5" class="tg-io7e">ViT backbone</td>
+                    </tr>
+                    <tr>
+                      <td class="tg-6aag">ViT (ICML'2021)</td>
+                      <td class="tg-io7e">37.5</td>
+                      <td class="tg-io7e">56.9</td>
+                      <td class="tg-io7e">30.4</td>
+                      <td class="tg-io7e">10.3</td>
+                    </tr>
+                    <tr>
+                      <td class="tg-6aag">DeiT-III (ECCV'2022)</td>
+                      <td class="tg-io7e">48.4</td>
+                      <td class="tg-io7e">70.4</td>
+                      <td class="tg-io7e">40.9</td>
+                      <td class="tg-io7e">12.8</td>
+                    </tr>
+                    <tr>
+                      <td class="tg-6aag"><sup>1</sup><span style="font-weight:bold">DeiT-LT (ours)</span></td>
+                      <td class="tg-io7e"><span style="font-weight:bold">55.6</span></td>
+                      <td class="tg-io7e"><span style="font-weight:bold">65.2</span></td>
+                      <td class="tg-io7e"><span style="font-weight:bold">54.0</span></td>
+                      <td class="tg-io7e"><span style="font-weight:bold">37.1</span></td>
+                    </tr>
+                    <tr>
+                      <td class="tg-6aag"><sup>2</sup><span style="font-weight:bold">DeiT-LT (ours)</span></td>
+                      <td class="tg-io7e"><span style="font-weight:bold">59.1</span></td>
+                      <td class="tg-io7e"><span style="font-weight:bold">66.6</span></td>
+                      <td class="tg-io7e"><span style="font-weight:bold">58.3</span></td>
+                      <td class="tg-io7e"><span style="font-weight:bold">40.0</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
 
         <div class="content is-centered has-text-justified my_text">
           3. <b>Results on iNaturalist-2018</b> Performance (%) of the proposed approach DeiT-LT, compared to the
-          existing methods on ImageNet-1k.
+          existing methods on iNaturalist-2018. Supererscripts indicate teacher-student pairs.
         </div>
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-four-fifths">
+            <style type="text/css">
+              .tg {
+                border-collapse: collapse;
+                border-color: #ccc;
+                border-spacing: 0;
+                border-style: solid;
+                border-width: 1px;
+              }
+    
+              .tg td {
+                background-color: #fff;
+                border-color: #ccc;
+                border-style: solid;
+                border-width: 0px;
+                color: #333;
+                font-family: Arial, sans-serif;
+                font-size: 14px;
+                overflow: hidden;
+                padding: 11px 17px;
+                word-break: normal;
+              }
+    
+              .tg th {
+                background-color: #f0f0f0;
+                border-color: #ccc;
+                border-style: solid;
+                border-width: 0px;
+                color: #333;
+                font-family: Arial, sans-serif;
+                font-size: 14px;
+                font-weight: normal;
+                overflow: hidden;
+                padding: 11px 17px;
+                word-break: normal;
+              }
+    
+              .tg .tg-6rtx {
+                border-color: inherit;
+                font-family: inherit;
+                font-size: 100%;
+                font-weight: bold;
+                text-align: center;
+                vertical-align: bottom
+              }
+    
+              .tg .tg-dm6v {
+                border-color: inherit;
+                font-family: inherit;
+                font-size: 100%;
+                font-weight: bold;
+                text-align: left;
+                vertical-align: bottom
+              }
+    
+              .tg .tg-hcx2 {
+                border-color: #000000;
+                font-family: inherit;
+                font-size: 100%;
+                text-align: left;
+                vertical-align: top
+              }
+    
+              .tg .tg-6aag {
+                border-color: inherit;
+                font-family: inherit;
+                font-size: 100%;
+                text-align: left;
+                vertical-align: bottom
+              }
+    
+              .tg .tg-io7e {
+                border-color: inherit;
+                font-family: inherit;
+                font-size: 100%;
+                text-align: center;
+                vertical-align: bottom
+              }
+            </style>
+            <table class="tg" align="center">
+              <thead>
+                <tr>
+                  <th class="tg-dm6v"><span style="font-weight:bold">Method</span></th>
+                  <th class="tg-6rtx" ><span style="font-weight:bold">Overall</span></th>
+                  <th class="tg-6rtx" ><span style="font-weight:bold">Head</span></th>
+                  <th class="tg-6rtx"><span style="font-weight:bold">Mid</span></th>
+                  <th class="tg-6rtx"><span style="font-weight:bold">Tail</span></th> 
+
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="border-bottom: 1px solid black; border-top: 1px solid black;">
+                  <td colspan="5" class="tg-io7e">ResNet-50 backbone</td>
+                </tr>
+                <tr>
+                  <td class="tg-6aag">cRT (ICLR'2020)</td>
+                  <td class="tg-io7e">65.2</td>
+                  <td class="tg-io7e">69.0</td>
+                  <td class="tg-io7e">66.0</td>
+                  <td class="tg-io7e">63.2</td>
+                </tr>
+                <tr>
+                  <td class="tg-hcx2">RIDE (3 exp.) (ICLR'2021)</td>
+                  <td class="tg-io7e">72.2</td>
+                  <td class="tg-io7e">70.2</td>
+                  <td class="tg-io7e">72.2</td>
+                  <td class="tg-io7e">72.7</td>
+                </tr>
+                <tr>
+                  <td class="tg-hcx2">CBD<sub>ENS</sub> (BMVC'2021)</td>
+                  <td class="tg-io7e">73.6</td>
+                  <td class="tg-io7e">75.9</td>
+                  <td class="tg-io7e">74.7</td>
+                  <td class="tg-io7e">71.5</td>
+                </tr>
+                <tr>
+                  <td class="tg-6aag"><sup>1</sup>LDAM+DRW+SAM (NeurIPS'2022)</td>
+                  <td class="tg-io7e">70.1</td>
+                  <td class="tg-io7e">64.1</td>
+                  <td class="tg-io7e">70.5</td>
+                  <td class="tg-io7e">71.2</td>
+                </tr>
+                <tr>
+                  <td class="tg-6aag"><sup>2</sup>PaCo+SAM (ICCV'2021, NeurIPS'2022)</td>
+                  <td class="tg-io7e">73.4</td>
+                  <td class="tg-io7e">66.3</td>
+                  <td class="tg-io7e">73.6</td>
+                  <td class="tg-io7e">75.2</td>
+                </tr>
+                <tr style="border-bottom: 1px solid black; border-top: 1px solid black;">
+                  <td colspan="5" class="tg-io7e">ViT backbone</td>
+                </tr>
+                <tr>
+                  <td class="tg-6aag">ViT (ICML'2021)</td>
+                  <td class="tg-io7e">54.2</td>
+                  <td class="tg-io7e">64.3</td>
+                  <td class="tg-io7e">53.9</td>
+                  <td class="tg-io7e">52.1</td>
+                </tr>
+                <tr>
+                  <td class="tg-6aag">DeiT-III (ECCV'2022)</td>
+                  <td class="tg-io7e">61.0</td>
+                  <td class="tg-io7e">72.9</td>
+                  <td class="tg-io7e">62.8</td>
+                  <td class="tg-io7e">55.8</td>
+                </tr>
+                <tr>
+                  <td class="tg-6aag"><sup>1</sup><span style="font-weight:bold">DeiT-LT (ours)</span></td>
+                  <td class="tg-io7e"><span style="font-weight:bold">72.9</span></td>
+                  <td class="tg-io7e"><span style="font-weight:bold">69.0</span></td>
+                  <td class="tg-io7e"><span style="font-weight:bold">73.3</span></td>
+                  <td class="tg-io7e"><span style="font-weight:bold">73.3</span></td>
+                </tr>
+                <tr>
+                  <td class="tg-6aag"><sup>2</sup><span style="font-weight:bold">DeiT-LT (ours)</span></td>
+                  <td class="tg-io7e"><span style="font-weight:bold">75.1</span></td>
+                  <td class="tg-io7e"><span style="font-weight:bold">70.3</span></td>
+                  <td class="tg-io7e"><span style="font-weight:bold">75.2</span></td>
+                  <td class="tg-io7e"><span style="font-weight:bold">76.2</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
       </div>
     </div>
 
