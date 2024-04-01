@@ -34,6 +34,21 @@
     .img-container {
       text-align: center;
     }
+
+    .table-container {
+    display: flex;
+    /* justify-content: space-around; This will space out the tables evenly */
+    align-items: start; /* This aligns the tables to the top */
+    padding-bottom: 0px;
+    }
+
+    .flex-caption {
+      padding: 10%;
+      padding-bottom: 0px;
+    }
+
+    
+  
   </style>
 
 </head>
@@ -192,17 +207,75 @@
         <h2 class="title is-3">Proposed Method</h2>
       </div>
     </div>
+    <style>
+      .item {
+    display: flex;
+    /* align-items: center;  */
+    margin-bottom: 20px;
+    align-items: center;
+    vertical-align: center;
+    margin-right: 10%;
+  }
+  .item img {
+    margin-left: 30px; /* Adds some space between the image and the text */
+  }
+  
+  .image-container {
+    position: relative;
+    display: inline-block; /* Make the container as wide as the image */
+    width: 150%; /* This can be adjusted based on the desired width of the image */
+  }
+
+  .image-container img {
+    width: 100%; /* Make the image fill the container */
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Remove any space below the image */
+  }
+  .image-caption {
+    position: absolute;
+    top: 40%; /* Align the top of the caption with the top of the container */
+    left: 30%;
+    right: 0; /* Stretch the caption to cover the full width of the container */
+    bottom: 0; /* Stretch the caption to cover the full height of the container */
+    background-color: rgba(0, 0, 0, 0.7); /* Darker semi-transparent black background for better readability */
+    color: white; /* White text color */
+    visibility: hidden; /* Hide the caption by default */
+    opacity: 0;
+    display: flex;
+    align-items: center; /* Center the text vertically */
+    justify-content: center; /* Center the text horizontally */
+    transition: visibility 0s, opacity 0.7s linear; /* Smooth transition for the caption */
+    height: 40%;
+    font-size: 12px;
+    padding: 5%;
+  }
+  .image-container:hover .image-caption {
+    visibility: visible; /* Show the caption when hovering */
+    opacity: 1;
+  }
+
+    </style>
     <div class="container is-max-desktop">
       <div class="hero-body">
         <img id="overview" src="./static/images/proposed_approach.png">
         <div class="content has-text-justified">
           <ul>
-            <li>
-              <b>Distillation via Out-of-Distribution images</b>: We propose to distill knowledge from a CNN teacher
+            <hr>
+            <li class="item">
+              <div>
+              <b>• Distillation via Out-of-Distribution images</b>: We propose to distill knowledge from a CNN teacher
               through OOD images generated using CutMix and Mixup. The distillation is done via the DIST token as
-              follows:
+              follows: <br>
               $$\mathcal{L}_{dist} = \mathcal{L}_{CE} (f^{d}(x), y_{t}), y_t = \arg \max_{i} g(x)_{i}$$
+              </div>
+              <div class="image-container">
+              <img src="./static/images/Similarity Plot CVPR-1.png">
+              <div class="image-caption">
+                The out-of-distribution distillation leads to diverse experts, which become more diverse with deferred re-weighting on the distillation token (DRW).
+              </div>
+              </div>
             </li>
+            <hr>
             <li>
               <b>Deferred Re-Weighting (DRW) for distillation</b>: We introduce DRW with the distillation loss to
               encourage the DIST token to focus on the tail classes. This leads to diverse CLS and DIST tokens that
@@ -213,11 +286,33 @@
               $$w_y = {1}/\{1 + (e_y - 1)\mathbb{1}_{\mathrm{epoch \geq K}}\}, \textrm{ where }
               e_y=\frac{1-\beta^{N_y}}{1-\beta}$$
             </li>
-            <li>
-              <b>Low-rank features via SAM teachers</b>: To further improve the generalizability to tail classes, we
+            <hr>
+            <li class="item">
+              <div>
+              <b>• Low-rank features via SAM teachers</b>: To further improve the generalizability to tail classes, we
               propose to distill teachers that have been trained with <a
                 href="https://arxiv.org/abs/2010.01412">Sharpness Aware Minimization (SAM)</a>.
+              </div>
+              <div class="image-container">
+                <img src="./static/images/feat_rank_all-1.png" alt="Description 1">
+                <div class="image-caption">
+                  We show the rank of features for DIST token, where we demonstrate that students trained with SAM are more low-rank in comparison to baselines.
+                </div>
+              </div>
             </li>
+            <hr>
+            <li class="item">
+              <div>
+              <b>• Induction of local features</b>: DeiT-LT contains heads that attend locally, like CNN, in the neighborhood of the patch in early blocks (1,2) and hence learn more local generalizable features.
+              </div>
+              <div class="image-container">
+                <img src="./static/images/local_connectivity_small-1.png" alt="Description 1">
+                <div class="image-caption">
+                  We plot the Mean Attention Distance for the patches across the early self attention block 1 (solid) and block 2 (dashed) for baselines, where we find that DeiT-LT leads to highly local and generalizable features.
+                </div>
+              </div>
+            </li>
+            <hr>
           </ul>
         </div>
       </div>
@@ -225,7 +320,7 @@
 
   </section>
 
-  <section id="video" class="hero teaser is-light">
+  <!-- <section id="video" class="hero teaser is-light">
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
         <br>
@@ -244,10 +339,10 @@ rank of features for DIST token, where we demonstrate that students trained with
         </div>
       </div>
     </div>
-  </section>
+  </section> -->
 
 
-  <section id="video" class="hero teaser">
+  <section id="video" class="hero teaser is-light">
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
         <br>
@@ -266,7 +361,8 @@ rank of features for DIST token, where we demonstrate that students trained with
   </section>
 
 
-  <section id="video" class="hero teaser is-light">
+  <section id="video" class="hero teaser">
+    
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
         <br>
@@ -280,6 +376,8 @@ rank of features for DIST token, where we demonstrate that students trained with
             font-size: 20px;
           }
         </style>
+        <div class="table-container">
+          <div style="padding-left: 16%; padding-right: 16%; padding-bottom: 0px; margin-bottom: 0px;">
         <div class="content is-centered has-text-justified my_text">
           1. <b>Results on CIFAR10-LT and CIFAR100-LT:</b> Performance (%) of the proposed
           approach DeiT-LT, compared to the existing methods on CIFAR-10 and CIFAR-100 with $\rho=50$ and $\rho=100$.
@@ -309,7 +407,7 @@ rank of features for DIST token, where we demonstrate that students trained with
               }
     
               .tg th {
-                background-color: #f0f0f0;
+                background-color:white;
                 border-color: #ccc;
                 border-style: solid;
                 border-width: 0px;
@@ -328,7 +426,8 @@ rank of features for DIST token, where we demonstrate that students trained with
                 font-size: 100%;
                 font-weight: bold;
                 text-align: center;
-                vertical-align: bottom
+                vertical-align: bottom;
+                background-color:white;
               }
     
               .tg .tg-dm6v {
@@ -337,7 +436,8 @@ rank of features for DIST token, where we demonstrate that students trained with
                 font-size: 100%;
                 font-weight: bold;
                 text-align: left;
-                vertical-align: bottom
+                vertical-align: bottom;
+                background-color:white;
               }
     
               .tg .tg-hcx2 {
@@ -363,6 +463,11 @@ rank of features for DIST token, where we demonstrate that students trained with
                 text-align: center;
                 vertical-align: bottom
               }
+
+                tr:hover td {
+                  background-color: rgba(190, 255, 213, 0.3);
+                }
+              
             </style>
             <table class="tg" align="center">
               <thead>
@@ -384,8 +489,8 @@ rank of features for DIST token, where we demonstrate that students trained with
                 </tr>
               </thead>
               <tbody>
-                <tr style="border-bottom: 1px solid black; border-top: 1px solid black;">
-                  <td colspan="5" class="tg-io7e">ResNet-32 backbone</td>
+                <tr>
+                  <td colspan="5" class="tg-io7e" style="background-color: #f0f0f0;">ResNet-32 backbone</td>
                 </tr>
                 <tr>
                   <td class="tg-6aag">CB Focal Loss (CVPR'2019)</td>
@@ -423,8 +528,8 @@ rank of features for DIST token, where we demonstrate that students trained with
                   <td class="tg-io7e">56.6</td>
                 </tr>
 
-                <tr style="border-bottom: 1px solid black; border-top: 1px solid black;">
-                  <td colspan="5" class="tg-io7e">ViT backbone</td>
+                <tr>
+                  <td colspan="5" class="tg-io7e" style="background-color: #f0f0f0;">ViT backbone</td>
                 </tr>
                 <tr>
                   <td class="tg-6aag">ViT (ICLR'2021)</td>
@@ -478,11 +583,15 @@ rank of features for DIST token, where we demonstrate that students trained with
             </table>
           </div>
         </div>
-        <br>
-        <div class="content is-centered has-text-justified my_text">
-          2. <b>Results on ImageNet-LT:</b> Performance (%) of the proposed approach DeiT-LT, compared to the existing
-          methods on ImageNet-LT. Supererscripts indicate teacher-student pairs.
+
         </div>
+      </div>
+        <div class="table-container">
+          <div>
+            <div class="content is-centered has-text-justified my_text flex-caption">
+              2. <b>Results on ImageNet-LT:</b> Performance (%) of the proposed approach DeiT-LT, compared to the existing
+              methods on ImageNet-LT. Supererscripts indicate teacher-student pairs.
+            </div>
             <div class="columns is-centered has-text-centered">
               <div class="column is-four-fifths">
                 <style type="text/css">
@@ -575,8 +684,8 @@ rank of features for DIST token, where we demonstrate that students trained with
                     </tr>
                   </thead>
                   <tbody>
-                    <tr style="border-bottom: 1px solid black; border-top: 1px solid black;">
-                      <td colspan="5" class="tg-io7e">ResNet-50 backbone</td>
+                    <tr>
+                      <td colspan="5" class="tg-io7e" style="background-color: #f0f0f0;">ResNet50 backbone</td>
                     </tr>
                     <tr>
                       <td class="tg-6aag">LDAM (NeurIPS'2019)</td>
@@ -613,8 +722,8 @@ rank of features for DIST token, where we demonstrate that students trained with
                       <td class="tg-io7e">58.8</td>
                       <td class="tg-io7e">39.3</td>
                     </tr>
-                    <tr style="border-bottom: 1px solid black; border-top: 1px solid black;">
-                      <td colspan="5" class="tg-io7e">ViT backbone</td>
+                    <tr>
+                      <td colspan="5" class="tg-io7e" style="background-color: #f0f0f0;">ViT backbone</td>
                     </tr>
                     <tr>
                       <td class="tg-6aag">ViT (ICML'2021)</td>
@@ -648,11 +757,12 @@ rank of features for DIST token, where we demonstrate that students trained with
                 </table>
               </div>
             </div>
-
-        <div class="content is-centered has-text-justified my_text">
-          3. <b>Results on iNaturalist-2018</b> Performance (%) of the proposed approach DeiT-LT, compared to the
-          existing methods on iNaturalist-2018. Supererscripts indicate teacher-student pairs.
-        </div>
+            </div>
+            <div>
+            <div class="content is-centered has-text-justified my_text flex-caption">
+              3. <b>Results on iNaturalist-2018</b> Performance (%) of the proposed approach DeiT-LT, compared to the
+              existing methods on iNaturalist-2018. Supererscripts indicate teacher-student pairs.
+            </div>
         <div class="columns is-centered has-text-centered">
           <div class="column is-four-fifths">
             <style type="text/css">
@@ -745,8 +855,8 @@ rank of features for DIST token, where we demonstrate that students trained with
                 </tr>
               </thead>
               <tbody>
-                <tr style="border-bottom: 1px solid black; border-top: 1px solid black;">
-                  <td colspan="5" class="tg-io7e">ResNet-50 backbone</td>
+                <tr>
+                  <td colspan="5" class="tg-io7e" style="background-color: #f0f0f0;">ResNet50 backbone</td>
                 </tr>
                 <tr>
                   <td class="tg-6aag">cRT (ICLR'2020)</td>
@@ -783,8 +893,8 @@ rank of features for DIST token, where we demonstrate that students trained with
                   <td class="tg-io7e">73.6</td>
                   <td class="tg-io7e">75.2</td>
                 </tr>
-                <tr style="border-bottom: 1px solid black; border-top: 1px solid black;">
-                  <td colspan="5" class="tg-io7e">ViT backbone</td>
+                <tr>
+                  <td colspan="5" class="tg-io7e" style="background-color: #f0f0f0;">ViT backbone</td>
                 </tr>
                 <tr>
                   <td class="tg-6aag">ViT (ICML'2021)</td>
@@ -818,17 +928,19 @@ rank of features for DIST token, where we demonstrate that students trained with
             </table>
           </div>
         </div>
+        </div>
 
       </div>
     </div>
-    <br>
+    
+    </div>
     <br>
   </section>
 
 
 
 
-  <section class="section hero teaser" id="BibTeX">
+  <section class="section hero teaser is-light" id="BibTeX">
     <div class="container is-max-desktop content">
       <h2 class="title">BibTeX</h2>
       <pre><code>@article{rangwani2024deit-lt,
